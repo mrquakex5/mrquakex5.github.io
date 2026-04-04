@@ -4,19 +4,305 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quake Code</title>
+  <meta name="description" content="Quake Code is a terminal-first coding assistant for reading files, editing code, running shell commands, managing sessions, and shipping faster." />
   <style>
-    :root { --bg:#0b0b0f; --fg:#f5f5f5; --muted:#a1a1aa; --accent:#9ad08f; }
-    body { margin:0; min-height:100vh; display:grid; place-items:center; background:var(--bg); color:var(--fg); font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
-    main { text-align:center; padding:32px; }
-    h1 { margin:0 0 12px; font-size:56px; letter-spacing:.02em; }
-    p { margin:0; color:var(--muted); font-size:18px; }
-    .accent { color:var(--accent); }
+    :root {
+      --bg: #0b0b0f;
+      --bg-soft: #111117;
+      --card: #13151b;
+      --border: #2b313c;
+      --text: #f4f7fb;
+      --muted: #9aa4b2;
+      --silver: #d8dde6;
+      --silver-dim: #b8c0cc;
+      --accent: #9ad08f;
+      --accent-deep: #6faa68;
+      --shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top center, rgba(154, 208, 143, 0.12), transparent 26%),
+        linear-gradient(180deg, #09090d 0%, #0b0b0f 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      color: var(--silver);
+    }
+    .brand-mark {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--silver));
+      box-shadow: 0 0 18px rgba(154, 208, 143, .35);
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 36px 0 24px;
+    }
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--silver);
+    }
+    .hero-copy p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 720px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #12141a;
+      color: var(--silver);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, #151a14, #0f1410);
+      border-color: rgba(154, 208, 143, .35);
+      color: #eaf8e6;
+    }
+    .micro {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .terminal {
+      border: 1px solid rgba(154, 208, 143, .32);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(10, 11, 15, 0.94);
+      box-shadow: var(--shadow);
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dots { display:flex; gap:8px; }
+    .dots span { width:10px; height:10px; border-radius:999px; display:block; background:#404857; }
+    .terminal-body {
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      color: var(--silver-dim);
+      white-space: pre-wrap;
+    }
+    .line-accent { color: var(--accent); }
+    .line-bright { color: var(--silver); }
+    .section {
+      padding: 30px 0;
+    }
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+      color: var(--silver);
+    }
+    .section p.lead {
+      margin: 0 0 20px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--silver);
+      font-size: 18px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .code-block {
+      margin-top: 14px;
+      background: #0b0f10;
+      border: 1px solid rgba(154, 208, 143, .18);
+      border-radius: 16px;
+      padding: 18px;
+      overflow-x: auto;
+      color: var(--silver);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .footer {
+      padding: 36px 0 56px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: var(--silver-dim);
+      font-size: 13px;
+    }
+    @media (max-width: 900px) {
+      .hero, .split, .grid { grid-template-columns: 1fr; }
+      .nav { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1><span class="accent">Quake</span> Code</h1>
-    <p>Website preview for domain verification.</p>
-  </main>
+  <div class="shell">
+    <header class="nav">
+      <div class="brand"><span class="brand-mark"></span> <span>Quake Code</span></div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#install">Install</a>
+        <a href="#commands">Commands</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Terminal-first coding, with Quake speed.</h1>
+        <p>Quake Code is a terminal coding assistant for real repo work: reading files, editing code, running shell commands, managing sessions, and staying productive without leaving the CLI.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#install">Install Quake Code</a>
+          <a class="btn" href="https://www.npmjs.com/package/@mrquake/quakecode-cli" target="_blank" rel="noreferrer">View npm package</a>
+        </div>
+        <div class="micro">Built for developers who want a clean terminal workflow with sessions, tools, skills, and fast iteration.</div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div>quake-code</div>
+        </div>
+        <div class="terminal-body"><span class="line-accent">›</span> review the current project
+
+<span class="line-bright">●</span> Reading files
+<span class="line-bright">●</span> Summarizing structure
+<span class="line-bright">●</span> Suggesting next steps
+
+Quake Code helps you move from context to code, review, and iteration without breaking focus.</div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <h2>What it does</h2>
+      <p class="lead">Quake Code is designed to feel fast, focused, and practical for daily coding work. It keeps the UI clean, the workflow inside the terminal, and the defaults tuned for real projects.</p>
+      <div class="grid">
+        <div class="card"><h3>Interactive terminal UI</h3><p>Work in a focused coding interface with sessions, resume, history, model selection, and settings.</p></div>
+        <div class="card"><h3>Real repo tools</h3><p>Read files, edit code, search the workspace, and run shell commands without switching context.</p></div>
+        <div class="card"><h3>Project memory</h3><p>Use `AGENTS.md`, skills, prompts, themes, and extensions to keep Quake aligned with your workflow.</p></div>
+      </div>
+      <div class="pill-row">
+        <span class="pill">sessions</span>
+        <span class="pill">resume</span>
+        <span class="pill">file editing</span>
+        <span class="pill">shell tools</span>
+        <span class="pill">themes</span>
+        <span class="pill">extensions</span>
+        <span class="pill">skills</span>
+      </div>
+    </section>
+
+    <section id="install" class="section split">
+      <div>
+        <h2>Install</h2>
+        <p class="lead">Get Quake Code globally with npm, then launch it from the terminal with `quake` or `quake-code`.</p>
+        <div class="code-block">npm install -g @mrquake/quakecode-cli</div>
+        <div class="code-block">quake</div>
+      </div>
+      <div>
+        <h2>First commands</h2>
+        <p class="lead">Useful commands right after install.</p>
+        <div class="code-block">/login
+/model
+/settings
+/resume
+/init</div>
+      </div>
+    </section>
+
+    <section id="commands" class="section">
+      <h2>Why teams keep it simple</h2>
+      <p class="lead">Quake Code stays intentionally clean: a fast startup, a terminal-first interface, and commands that feel obvious enough to remember.</p>
+      <div class="grid">
+        <div class="card"><h3>`quake update`</h3><p>One obvious update command instead of asking users to remember long npm install strings.</p></div>
+        <div class="card"><h3>`/init`</h3><p>Generate an `AGENTS.md` file for the current project and establish clear repo instructions for Quake.</p></div>
+        <div class="card"><h3>`/resume`</h3><p>Jump back into previous sessions quickly without losing the flow of longer coding work.</p></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Quake Code — terminal-first coding assistance, designed to stay out of your way.</div>
+    </footer>
+  </div>
 </body>
 </html>
