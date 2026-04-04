@@ -211,6 +211,27 @@
       color: var(--silver-dim);
       font-size: 13px;
     }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.from-right { transform: translateX(48px); }
+    .reveal.from-left { transform: translateX(-48px); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+    .card {
+      transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(154, 208, 143, .22);
+      background: rgba(255,255,255,.035);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
     @media (max-width: 900px) {
       .hero, .split, .grid { grid-template-columns: 1fr; }
       .nav { flex-direction: column; align-items: flex-start; }
@@ -228,7 +249,7 @@
       </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-copy">
         <h1>Terminal-first coding, with Quake speed.</h1>
         <p>Quake Code is a terminal coding assistant for real repo work: reading files, editing code, running shell commands, managing sessions, and staying productive without leaving the CLI.</p>
@@ -253,13 +274,13 @@ Quake Code helps you move from context to code, review, and iteration without br
       </div>
     </section>
 
-    <section id="features" class="section">
+    <section id="features" class="section reveal">
       <h2>What it does</h2>
       <p class="lead">Quake Code is designed to feel fast, focused, and practical for daily coding work. It keeps the UI clean, the workflow inside the terminal, and the defaults tuned for real projects.</p>
       <div class="grid">
-        <div class="card"><h3>Interactive terminal UI</h3><p>Work in a focused coding interface with sessions, resume, history, model selection, and settings.</p></div>
-        <div class="card"><h3>Real repo tools</h3><p>Read files, edit code, search the workspace, and run shell commands without switching context.</p></div>
-        <div class="card"><h3>Project memory</h3><p>Use `AGENTS.md`, skills, prompts, themes, and extensions to keep Quake aligned with your workflow.</p></div>
+        <div class="card reveal from-left"><h3>Interactive terminal UI</h3><p>Work in a focused coding interface with sessions, resume, history, model selection, and settings.</p></div>
+        <div class="card reveal"><h3>Real repo tools</h3><p>Read files, edit code, search the workspace, and run shell commands without switching context.</p></div>
+        <div class="card reveal from-right"><h3>Project memory</h3><p>Use `AGENTS.md`, skills, prompts, themes, and extensions to keep Quake aligned with your workflow.</p></div>
       </div>
       <div class="pill-row">
         <span class="pill">sessions</span>
@@ -272,7 +293,7 @@ Quake Code helps you move from context to code, review, and iteration without br
       </div>
     </section>
 
-    <section id="install" class="section split">
+    <section id="install" class="section split reveal from-right">
       <div>
         <h2>Install</h2>
         <p class="lead">Get Quake Code globally with npm, then launch it from the terminal with `quake` or `quake-code`.</p>
@@ -290,13 +311,13 @@ Quake Code helps you move from context to code, review, and iteration without br
       </div>
     </section>
 
-    <section id="commands" class="section">
+    <section id="commands" class="section reveal from-left">
       <h2>Why teams keep it simple</h2>
       <p class="lead">Quake Code stays intentionally clean: a fast startup, a terminal-first interface, and commands that feel obvious enough to remember.</p>
       <div class="grid">
-        <div class="card"><h3>`quake update`</h3><p>One obvious update command instead of asking users to remember long npm install strings.</p></div>
-        <div class="card"><h3>`/init`</h3><p>Generate an `AGENTS.md` file for the current project and establish clear repo instructions for Quake.</p></div>
-        <div class="card"><h3>`/resume`</h3><p>Jump back into previous sessions quickly without losing the flow of longer coding work.</p></div>
+        <div class="card reveal from-left"><h3>`quake update`</h3><p>One obvious update command instead of asking users to remember long npm install strings.</p></div>
+        <div class="card reveal"><h3>`/init`</h3><p>Generate an `AGENTS.md` file for the current project and establish clear repo instructions for Quake.</p></div>
+        <div class="card reveal from-right"><h3>`/resume`</h3><p>Jump back into previous sessions quickly without losing the flow of longer coding work.</p></div>
       </div>
     </section>
 
@@ -304,5 +325,17 @@ Quake Code helps you move from context to code, review, and iteration without br
       <div>Quake Code — terminal-first coding assistance, designed to stay out of your way.</div>
     </footer>
   </div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    document.querySelector('.hero')?.classList.add('visible');
+  </script>
 </body>
 </html>
