@@ -1,5 +1,102 @@
 [
   {
+    "name": "@mrquake/quakecode-cli",
+    "title": "Quake Code CLI",
+    "type": "package",
+    "summary": "The main Quake Code terminal app with bundled browser tools, search, skills, and subagents.",
+    "author": "MrQuake",
+    "updated": "v0.64.29",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
+    },
+    "install": "npm i -g @mrquake/quakecode-cli@latest",
+    "featured": true
+  },
+  {
+    "name": "@mrquake/quakecode-agent-core",
+    "title": "Quake Code Agent Core",
+    "type": "package",
+    "summary": "Agent runtime package that powers Quake Code sessions, streaming, and tool orchestration.",
+    "author": "MrQuake",
+    "updated": "v0.64.1",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-agent-core",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-agent-core",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-agent-core/-/mrquake-quakecode-agent-core-0.64.1.tgz"
+    },
+    "install": "npm i @mrquake/quakecode-agent-core@latest"
+  },
+  {
+    "name": "@mrquake/quakecode-ai",
+    "title": "Quake Code AI",
+    "type": "package",
+    "summary": "Provider, auth, and model discovery layer for Quake Code.",
+    "author": "MrQuake",
+    "updated": "v0.64.1",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-ai",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-ai",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-ai/-/mrquake-quakecode-ai-0.64.1.tgz"
+    },
+    "install": "npm i @mrquake/quakecode-ai@latest"
+  },
+  {
+    "name": "@mrquake/quakecode-tui",
+    "title": "Quake Code TUI",
+    "type": "package",
+    "summary": "Terminal UI layer for Quake Code apps and extensions.",
+    "author": "MrQuake",
+    "updated": "v0.64.3",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-tui",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-tui",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-tui/-/mrquake-quakecode-tui-0.64.3.tgz"
+    },
+    "install": "npm i @mrquake/quakecode-tui@latest"
+  },
+  {
+    "name": "@mrquake/quakecode-jiti",
+    "title": "Quake Code Jiti",
+    "type": "package",
+    "summary": "Quake Code wrapper package for dynamic TypeScript/ESM extension loading.",
+    "author": "MrQuake",
+    "updated": "v0.64.1",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-jiti",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-jiti",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-jiti/-/mrquake-quakecode-jiti-0.64.1.tgz"
+    },
+    "install": "npm i @mrquake/quakecode-jiti@latest"
+  },
+  {
+    "name": "@mrquake/quakecode-clipboard",
+    "title": "Quake Code Clipboard",
+    "type": "package",
+    "summary": "Native clipboard bridge used by Quake Code.",
+    "author": "MrQuake",
+    "updated": "v0.64.1",
+    "installs": "npm",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-clipboard",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-clipboard",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-clipboard/-/mrquake-quakecode-clipboard-0.64.1.tgz"
+    },
+    "install": "npm i @mrquake/quakecode-clipboard@latest"
+  },
+  {
     "name": "quake-browser-tools",
     "title": "Quake Browser Tools",
     "type": "extension",
@@ -10,9 +107,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code",
+    "install": "Bundled with Quake Code",
     "featured": true
   },
   {
@@ -26,9 +124,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code",
+    "install": "Bundled with Quake Code",
     "featured": true
   },
   {
@@ -42,9 +141,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code"
+    "install": "Bundled with Quake Code"
   },
   {
     "name": "context7",
@@ -57,9 +157,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code"
+    "install": "Bundled with Quake Code"
   },
   {
     "name": "librarian",
@@ -72,9 +173,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code"
+    "install": "Bundled with Quake Code"
   },
   {
     "name": "quake-plan",
@@ -87,9 +189,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code"
+    "install": "Bundled with Quake Code"
   },
   {
     "name": "quake-review",
@@ -102,9 +205,10 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
-    "install": "Bundled with quake-code"
+    "install": "Bundled with Quake Code"
   },
   {
     "name": "quake-pistachio",
@@ -117,7 +221,8 @@
     "links": {
       "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
       "repo": "https://github.com/mrquakex5/quake-code",
-      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "download": "https://registry.npmjs.org/@mrquake/quakecode-cli/-/mrquake-quakecode-cli-0.64.29.tgz"
     },
     "install": "Built in"
   }
