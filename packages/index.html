@@ -161,18 +161,27 @@
       render();
     }
 
+    function escapeAttr(value) {
+      return String(value ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
     function card(item) {
       const links = [];
       if (item.links?.npm) links.push(`<a href="${item.links.npm}" target="_blank" rel="noreferrer">npm</a>`);
       if (item.links?.repo) links.push(`<a href="${item.links.repo}" target="_blank" rel="noreferrer">repo</a>`);
       if (item.links?.readme) links.push(`<a href="${item.links.readme}" target="_blank" rel="noreferrer">readme</a>`);
+      if (item.links?.download) links.push(`<a href="${item.links.download}" target="_blank" rel="noreferrer">download</a>`);
+      const badges = [];
+      badges.push(`<span class="badge badge-type">${item.type}</span>`);
+      if (item.official) badges.push(`<span class="badge badge-official">official</span>`);
+      else if (item.community) badges.push(`<span class="badge badge-community">community</span>`);
       return `
         <article class="card">
           <div class="topline">
             <div>
               <h2 class="title">${item.title}</h2>
             </div>
-            <span class="badge">${item.type}</span>
+            <div class="badge-row">${badges.join('')}</div>
           </div>
           <p class="summary">${item.summary}</p>
           <div class="submeta">
