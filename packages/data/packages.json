@@ -1,0 +1,124 @@
+[
+  {
+    "name": "quake-browser-tools",
+    "title": "Quake Browser Tools",
+    "type": "extension",
+    "summary": "Visible browser automation and page interaction tools for Quake Code.",
+    "author": "MrQuake",
+    "updated": "Official",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code",
+    "featured": true
+  },
+  {
+    "name": "quake-subagents",
+    "title": "Quake Subagents",
+    "type": "extension",
+    "summary": "Delegate work to subagents with chaining, background runs, and parallel execution.",
+    "author": "MrQuake",
+    "updated": "Official",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code",
+    "featured": true
+  },
+  {
+    "name": "quake-web-search",
+    "title": "Quake Web Search",
+    "type": "extension",
+    "summary": "Fast web search tool for Quake Code with terminal-friendly output.",
+    "author": "MrQuake",
+    "updated": "Official",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code"
+  },
+  {
+    "name": "context7",
+    "title": "Context7",
+    "type": "skill",
+    "summary": "Search up-to-date docs and examples for frameworks and libraries.",
+    "author": "Quake Community",
+    "updated": "Bundled",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code"
+  },
+  {
+    "name": "librarian",
+    "title": "Librarian",
+    "type": "skill",
+    "summary": "Research open-source libraries with evidence-backed answers and code references.",
+    "author": "Quake Community",
+    "updated": "Bundled",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code"
+  },
+  {
+    "name": "quake-plan",
+    "title": "Quake Plan",
+    "type": "skill",
+    "summary": "Turn vague requests into structured implementation plans.",
+    "author": "MrQuake",
+    "updated": "Bundled",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code"
+  },
+  {
+    "name": "quake-review",
+    "title": "Quake Review",
+    "type": "skill",
+    "summary": "Review local code changes with a practical senior-engineer checklist.",
+    "author": "MrQuake",
+    "updated": "Bundled",
+    "installs": "bundled",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Bundled with quake-code"
+  },
+  {
+    "name": "quake-pistachio",
+    "title": "Quake Pistachio Theme",
+    "type": "theme",
+    "summary": "Default Quake Code terminal theme with pistachio accents and low-noise contrast.",
+    "author": "MrQuake",
+    "updated": "Built-in",
+    "installs": "built-in",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@mrquake/quakecode-cli",
+      "repo": "https://github.com/mrquakex5/quake-code",
+      "readme": "https://www.npmjs.com/package/@mrquake/quakecode-cli"
+    },
+    "install": "Built in"
+  }
+]
